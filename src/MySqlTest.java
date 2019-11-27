@@ -21,10 +21,12 @@ public class MySqlTest {
 		try {
 			Connection con = DriverManager.getConnection(SERVER, ID, PW);
 			Statement stmt = con.createStatement();
-			System.out.println("Connected Succesful?");
+			System.out.println("Connected Succesfully");
 			
-			ResultSet rs = stmt.executeQuery("Select * from Department");
-			System.out.println("After table query");
+			System.out.println("")
+			
+			ResultSet rs = stmt.executeQuery("Select * from dgargu1db.Department");
+			System.out.println("After query");
 
 			
 			while (rs.next()) {
