@@ -14,9 +14,10 @@ var con = mysql.createConnection(
     {
         if (err) throw err;
         console.log("Connected!");
-        con.query('SELECT * FROM dgargu1db.ingredient', function(err, result, fields)
+        con.query('SELECT * FROM dgargu1db.login', function(err, result, fields)
         {
             if (err) throw err;
             console.log(result);
         });
     });
+    con.close();
