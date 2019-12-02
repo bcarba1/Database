@@ -1,5 +1,5 @@
+var mysql = require('mysql');
 
-    var mysql = require('mysql');
 function again()
 {
     console.log('Work')
