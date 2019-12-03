@@ -6,51 +6,32 @@ const app = express();
 app.use(cors());
 
 const config = ({
-    host: 'us-cdbr-iron-east-05.cleardb.net',
-    user: 'bf967a94ff1047',
-    password: '40e7fd8d',
-    database: 'heroku_01f0321449bfb48'
+    host: 'triton.towson.edu',
+    user: 'mchen16',
+    password: 'Cosc*d9jq',
+    database: 'mchen16db'
 });
 
 var con = mysql.createConnection(config);
-var users, employees, balances;
 var current_orders, ingredient_status, login;
 var validIds;
 
 try {
     con.connect();
 
-    con.query("SELECT * FROM users ", function (err, result, fields) {
-        if (err) throw err;
-        users = result;
-        console.log(users);
-    });
-
-    con.query("SELECT * FROM employees ", function (err, result, fields) {
-        if (err) throw err;
-        employees = result;
-        console.log(employees);
-    });
-
-    con.query("SELECT * FROM balances ", function (err, result, fields) {
-        if (err) throw err;
-        balances = result;
-        console.log(balances);
-    });
-
-    con.query("SELECT * FROM current_orders ", function (err, result, fields) {
+    con.query("SELECT * FROM Current_Orders ", function (err, result, fields) {
         if (err) throw err;
         current_orders = result;
         console.log(current_orders);
     });
 
-    con.query("SELECT * FROM ingredient_status ", function (err, result, fields) {
+    con.query("SELECT * FROM Ingredient_Status ", function (err, result, fields) {
         if (err) throw err;
         ingredient_status = result;
         console.log(ingredient_status);
     });
 
-    con.query("SELECT * FROM login ", function (err, result, fields) {
+    con.query("SELECT * FROM Login ", function (err, result, fields) {
         if (err) throw err;
         login = result;
         console.log(login);
@@ -63,6 +44,13 @@ catch (err) {
     console.log("Err: " + err);
 }
 
+createConnection(connection) {
+    connection = mysql.createConnection(config);
+    connection.connect();
+    console.log("Connection made");
+    return connection;
+}
+/*
 //returns an all in 1 json with every table's content
 app.get('/', (req, res) => {
     res.send(JSON.stringify(current_orders)
@@ -242,7 +230,7 @@ ID - id
   `Egg_Ingredients`, `Bacon_Quantity`, `Sausage_Quantity`) VALUES ('133', 'NULL', 'Penne', 'Marinara', 'Mushroom, Onion', '4', '8', '0', '1', 'Mushroom', '2', '3' );
 */
 //https://wv-food-order-api.herokuapp.com/pastaOrder?sauces=1_1_1&protein=1_1_1_1_1&topping=1_1_1_1_1&seasoning=1_1_1_1_1&pasta=bowtie&id=635111
-app.get('/pastaOrder', (req, res) => { //http://localhost:9000/order?sauces=1_1_1&protein=1_1_1_1_1&topping=1_1_1_1_1&seasoning=1_1_1_1_1&pasta=penne&id=5345345
+/*app.get('/pastaOrder', (req, res) => { //http://localhost:9000/order?sauces=1_1_1&protein=1_1_1_1_1&topping=1_1_1_1_1&seasoning=1_1_1_1_1&pasta=penne&id=5345345
     var urldata = url.parse(req.url, true);
 
     var sauces = urldata.query.sauces;
@@ -365,13 +353,9 @@ app.get('/pancakeOrder', (req, res) => {
 //     con.end();
 // });
 
+*/
+
 
 app.listen(process.env.PORT || 9000);
 
 
-function createConnection(connection) {
-    connection = mysql.createConnection(config);
-    connection.connect();
-    console.log("Connection made");
-    return connection;
-}
