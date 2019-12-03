@@ -1,0 +1,100 @@
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+/* textfield where student ID displays */
+#login_credentials {
+    margin: 20px;
+    font-size: 30px;
+}
+
+button {
+    min-width: 50px;
+    padding: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: 35px;
+    font: bold;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+button#one,
+button#two,
+button#three,
+button#four,
+button#five,
+button#six,
+button#eight {
+    background: rgb(196, 196, 196, 0.7);
+    background-image: url("../images/num-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px 5px 5px 5px;
+}
+
+button#zero {
+    background: rgb(196, 196, 196, 0.7);
+    background-image: url("../images/num-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px 5px 5px 40px;
+}
+
+button#seven {
+    background: rgb(196, 196, 196, 0.7);
+    background-image: url("../images/num-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 40px 5px 5px 5px;
+}
+
+button#nine {
+    background: rgb(196, 196, 196, 0.7);
+    background-image: url("../images/num-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px 40px 5px 5px;
+}
+
+button#delete {
+    background: rgb(255, 0, 0, 0.7);
+    background-image: url("../images/delete-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px 5px 40px 5px;
+    width: 100%;
+}
+
+button#enter {
+    background: rgb(0, 133, 0, 0.7);
+    background-image: url("../images/submit-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 40px;
+    width: 100%;
+}
+
+button#zero:active,
+button#one:active,
+button#two:active,
+button#three:active,
+button#four:active,
+button#five:active,
+button#six:active,
+button#seven:active,
+button#eight:active,
+button#nine:active {
+    border-color: rgb(255, 217, 0);
+}
+
+button#delete:active {
+    border-color: rgb(255, 0, 0);
+
+}
+
+button#enter:active {
+    border-color: rgb(0, 153, 255);
+}

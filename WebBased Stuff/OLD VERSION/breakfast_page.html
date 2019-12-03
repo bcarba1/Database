@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>Breakfast</title>
+
+    <style>
+
+        /*hides radio button checks for menu items-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+        .radio-tools {
+            margin: 10px;
+            opacity: 0;
+            position: fixed;
+            width: 0;
+        }
+
+        /*creates clickable boxes for menu items and adds style to them---------------------------------------------------------------------------------------------------------------------------------*/
+        .item_label {
+            display: inline-block;
+            background-color: rgb(53, 113, 128);
+            width: 50%;
+            padding: 2% 0%;
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+        }
+        
+        .item_label:hover {
+            background-color: rgb(1, 173, 241);
+            cursor:pointer;
+        }
+
+        .item_label:checked {
+            background-color: rgb(95, 178, 255);
+        }
+
+        /*hides radio button checks and checkboxes for menu options-------------------------------------------------------------------------------------------------------------------------------------*/
+        .all_options {
+            margin: 10px;
+            opacity: 0;
+            position: fixed;
+            width: 0;
+        }
+
+        /*creates clickable boxes for menu item options and adds style to them--------------------------------------------------------------------------------------------------------------------------*/
+        .option_label {
+            display: inline-block;
+            background-color: #ddd;
+            width: 25%;
+            padding: 1% 0%;
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 4px;
+        }
+
+        .option_label:hover {
+            background-color: rgb(255, 253, 221);
+            cursor:pointer;
+        }
+
+        :checked + .option_label {
+            background-color: rgb(250, 255, 187);
+            border-color: rgb(204, 195, 68);
+        }
+
+        /*hides the menu options by default-------------------------------------------------------------------------------------------------------------------------------------------------------------*/        
+        #pancake_options {
+            visibility: hidden;
+        }
+
+        #egg_options {
+            visibility: hidden;
+        }
+
+        #bacon_options {
+            visibility: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1 id = "head">Breakfast Menu</h1> 
+    <h3 id="please_select">Please Select an Item:</h3> <br>
+
+    <form action="review_order.html" method = "GET" name = "BreakfastItem" class="order">
+
+        <!--Used to pass studentID from previous webpage-->
+        <input type='hidden' value='' name='studentID' id='studentID'> 
+
+        <!--Pancake Button (Options only appear when this button is clicked)-->
+        <input type = "radio" id = "r_pancakes" name = "BFItem" value = "pancakes" onclick = "displayPancakeOptions(checked)" class = "radio-tools">
+        <label for = "r_pancakes" style="margin: 10px;" class = "item_label">Pancakes</label> <br><br>
+        <div id = "pancake_options"> 
+            <input type = "checkbox" name = "sugar" id = "sugar" class = "all_options"> <label for = "sugar" class = "option_label">Sugar</label><br>
+            <input type = "checkbox" name = "syrup" id = "syrup" class = "all_options"> <label for = "syrup" class = "option_label">Syrup</label><br>
+            <input type = "checkbox" name = "berries" id = "berries" class = "all_options"> <label for = "berries" class = "option_label">Berries</label><br>
+            <input type = "checkbox" name = "wh_cream" id = "wh_cream" class = "all_options"> <label for = "wh_cream" class = "option_label">Whipped Cream</label><br>
+        </div> <br>
+
+        <!--Eggs Button (Options only appear when this button is clicked)-->
+        <input type = "radio" id = "r_eggs" name = "BFItem" value = "fried_eggs" onclick = "displayEggOptions(checked)" class = "radio-tools">
+        <label for = "r_eggs" style="margin: 10px;" class = "item_label">Fried Eggs</label> <br><br>
+        <div id = "egg_options">
+            <input type = "checkbox" name = "red_pep" id = "red_pep" class = "all_options"> <label for = "red_pep" class = "option_label">Red Pepper</label><br>
+            <input type = "checkbox" name = "salt" id = "salt" class = "all_options"> <label for = "salt" class = "option_label">Salt</label><br>
+            <input type = "checkbox" name = "sage" id = "sage" class = "all_options"> <label for = "sage" class = "option_label">Sage</label><br>
+            <input type = "checkbox" name = "garlic" id = "garlic" class = "all_options"> <label for = "garlic" class = "option_label">Garlic</label><br>
+        </div> <br>
+
+        <!--Bacon Button (Options only appear when this button is clicked)-->
+        <input type = "radio" id = "r_bacon" name = "BFItem" value = "bacon" onclick = "displayBaconOptions(checked)" class = "radio-tools">
+        <label for = "r_bacon" style="margin: 10px;" class = "item_label">Bacon</label> <br><br>
+        <div id = "bacon_options">
+            <input type = "radio" name = "smoked" id = "smoked" value = "smoked" class = "all_options"> <label for = "smoked" class = "option_label">Smoked</label><br>
+            <input type = "radio" name = "turkey" id = "turkey" value = "turkey" class = "all_options"> <label for = "turkey" class = "option_label">Turkey Bacon</label><br>
+            <input type = "radio" name = "canadian" id = "canadian" value = "canadian" class = "all_options"> <label for = "canadian" class = "option_label">Canadian Bacon</label><br>
+            <input type = "radio" name = "pancetta" id = "pancetta" value = "pancetta" class = "all_options"> <label for = "pancetta" class = "option_label">Pancetta</label><br>
+        </div> <br>
+        
+        <!--Submit form and proceed to review_order page-->
+        <br><input type = "submit" value = "Add item to order"> 
+
+    </form>
+
+
+</body>
+
+<script>
+
+    onLoadUp();
+
+    //Function to hide and unselect all sub options
+    function hideAllOptions() {
+        var items = document.getElementsByClassName("all_options");
+        document.getElementById("pancake_options").style.visibility = "hidden";
+        document.getElementById("egg_options").style.visibility = "hidden";
+        document.getElementById("bacon_options").style.visibility = "hidden";
+
+        for (var i=0; i < items.length; i++) {
+			if (items[i].type == 'checkbox' || items[i].type == 'radio') {
+				items[i].checked = false;
+            }
+		}
+
+    }
+
+    //Function to display pancake options
+    function displayPancakeOptions() {
+        hideAllOptions();
+        var x = document.getElementById("pancake_options");
+        if (checked = true) {
+            x.style.visibility = "visible";
+        }
+    }
+
+    //Function to display egg options
+    function displayEggOptions() {
+        hideAllOptions();
+        var x = document.getElementById("egg_options");
+        if (checked = true) {
+            x.style.visibility = "visible";
+        }
+    }
+
+    //Function to display bacon options
+    function displayBaconOptions() {
+        hideAllOptions();
+        var x = document.getElementById("bacon_options");
+        if (checked = true) {
+            x.style.visibility = "visible";
+        }
+    }
+
+    //Function to take previous page string query and pass it on
+    function onLoadUp() {
+        var urlContent = location.search.substring(1); //stores url string
+        urlContent = urlContent.replace("studentID=", ""); //remove everything but the ID #'s
+        document.getElementById('studentID').value = urlContent; //finds the 'hidden' form-input and changes the values
+
+    }
+
+</script>
+
+</html>
