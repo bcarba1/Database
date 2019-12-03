@@ -21,13 +21,13 @@
                     </tr>
                     <tr>
                         <td>Alfredo</td>
-                        <td><label class='switch'><input type='checkbox'/></label></td> 
+                        <td><label class='switch'><input id='c_a' value = '1' type='checkbox'/></label></td> 
                     </tr>
                     <tr>
                         <td>Bacon</td>
-                        <td><label class='switch'><input type='checkbox'/></label></td>  
+                        <td><label class='switch'><input id='c_b' value='0' type='checkbox'/></label></td>  
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>Bowtie</td>
                         <td><label class='switch'><input type='checkbox'/></label></td>
                     </tr>
@@ -94,7 +94,7 @@
                     <tr>
                         <td>Spinache</td>
                         <td><label class='switch'><input type='checkbox'/></label></td>
-                    </tr>
+                    </tr> -->
                 </table>
                 <div>
                     <button id='apply' onclick='call()'>Apply Changes</button>
@@ -103,11 +103,12 @@
     
     </div>
 </body>
-<script src='test-sql.js'></script>
+<!-- <script src='test-sql.js'></script> -->
 <script>
     function call()
     {
-       callSQL();
+        let x = document.getElementById("c_a").checked;
+        console.log(x);
     }
 </script>
 </html>
