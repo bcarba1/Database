@@ -1,0 +1,73 @@
+body {
+    background-image: url("background.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    text-align: center;
+}
+
+/* title banner */
+#head {
+    background-image: url("header_bg.jpg");
+    background-size: cover;
+    color: white;
+}
+
+h1, h2, h3, h4, h5, h6, label {
+    font-family: proxima-nova,sans-serif;
+}
+
+#please_select {
+    color: white;
+}
+
+.order {
+    max-width: 800px;
+    margin: auto;
+    background:rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 25px;
+    align-content: center;
+
+}
+
+figure {
+    display: inline-block;
+    background-color:  lightgrey;
+    padding: 10px 10px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+}
+
+figure:hover {
+    background-color:  rgb(73, 250, 87);;
+}
+
+/*creates clickable box for submit button and adds style to it----------------------------------------------------------------------------------------------------------------------------------*/
+input[type = "submit"] {
+    display: inline-block;
+    background-color: rgb(61, 172, 70);
+    padding: 20px 100px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+}
+
+input[type = "submit"]:hover {
+    background-color: rgb(30, 110, 9);
+}
+
+input[type=text], select {
+    width: 40%;
+    padding: 13px;
+    margin: 0px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 30px;
+  }
+/*  Grid Container and Item ----------------*/
+.grid-container
+{
+    display: grid;
+    grid-template: auto auto auto;
+}
