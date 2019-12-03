@@ -9,7 +9,8 @@ const config = ({
     host: 'triton.towson.edu',
     user: 'mchen16',
     password: 'Cosc*d9jq',
-    database: 'mchen16db'
+    database: 'mchen16db',
+    port: 3360
 });
 
 var con = mysql.createConnection(config);
@@ -44,12 +45,6 @@ catch (err) {
     console.log("Err: " + err);
 }
 
-createConnection(connection) {
-    connection = mysql.createConnection(config);
-    connection.connect();
-    console.log("Connection made");
-    return connection;
-}
 /*
 //returns an all in 1 json with every table's content
 app.get('/', (req, res) => {
